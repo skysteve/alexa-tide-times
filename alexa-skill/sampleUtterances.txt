@@ -1,0 +1,7 @@
+BothTimes for the tide times in {City}
+
+HighTide for high tide time in {City}
+HighTide what time is high tide in {City}
+
+LowTide for high tide time in {City}
+LowTide what time is low tide in {City}

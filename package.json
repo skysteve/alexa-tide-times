@@ -1,0 +1,31 @@
+{
+  "name": "alexa-tide-times",
+  "version": "1.0.0",
+  "description": "Tide times skill",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skysteve/alexa-tide-times.git"
+  },
+  "author": "skysteve",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skysteve/alexa-tide-times/issues"
+  },
+  "homepage": "https://github.com/skysteve/alexa-tide-times#readme",
+  "dependencies": {
+    "alexa-sdk": "^1.0.7"
+  },
+  "devDependencies": {
+    "eslint": "^3.17.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1"
+  }
+}

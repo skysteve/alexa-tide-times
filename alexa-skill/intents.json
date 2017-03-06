@@ -1,0 +1,7 @@
+{
+  "intents": [
+    {"intent": "BothTimes", "slots": [{"name": "City", "type": "AMAZON.GB_CITY"}]},
+    {"intent": "HighTide", "slots": [{"name": "City", "type": "AMAZON.GB_CITY"}]},
+    {"intent": "LowTide", "slots": [{"name": "City", "type": "AMAZON.GB_CITY"}]}
+  ]
+}
