@@ -20,5 +20,8 @@ exports = {
     const city = this.event.request.intent.slots.City.value;
     const speachReply = `Low tide in ${city} is coming soon`;
     this.emit(':tellWithCard', speachReply, 'Tide Times', speachReply);
+  },
+  Unhandled() {
+    this.emit(':tell', 'Sorry, I failed to understand your query, please try again');
   }
 };
