@@ -17,7 +17,10 @@
   },
   "homepage": "https://github.com/skysteve/alexa-tide-times#readme",
   "dependencies": {
-    "alexa-sdk": "^1.0.7"
+    "alexa-sdk": "^1.0.7",
+    "feed-read": "0.0.1",
+    "moment": "^2.17.1",
+    "striptags": "^3.0.1"
   },
   "devDependencies": {
     "eslint": "^3.17.0",

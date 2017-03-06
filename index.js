@@ -1,6 +1,5 @@
-/**
- * Created by steve on 06/03/2017.
- */
+'use strict';
+
 const Alexa = require('alexa-sdk');
 const handlers = require('./src/handlers');
 
