@@ -40,7 +40,7 @@ module.exports = {
       throw new Error('No City');
     }
 
-    const url = urlBase.replace('CITY', city.toLowerCase());
+    const url = urlBase.replace('CITY', city.replace(/\s/g, '-').toLowerCase());
 
     console.log('loading feed from', url);
 
