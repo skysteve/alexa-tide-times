@@ -2,7 +2,7 @@
  * Created by steve on 06/03/2017.
  */
 
-exports = {
+module.exports = {
   LaunchRequest() {
     this.emit(':tellWithCard', 'Welcome to tide times', 'Tide Times', 'See http://www.ukho.gov.uk/easytide/EasyTide/ShowPrediction.aspx');
   },
