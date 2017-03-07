@@ -1,7 +1,7 @@
 {
   "intents": [
-    {"intent": "BothTimes", "slots": [{"name": "City", "type": "AMAZON.GB_CITY"}]},
-    {"intent": "HighTide", "slots": [{"name": "City", "type": "AMAZON.GB_CITY"}]},
-    {"intent": "LowTide", "slots": [{"name": "City", "type": "AMAZON.GB_CITY"}]}
+    {"intent": "BothTimes", "slots": [{"name": "Location", "type": "TIDE_LOCATION"}]},
+    {"intent": "HighTide", "slots": [{"name": "Location", "type": "TIDE_LOCATION"}]},
+    {"intent": "LowTide", "slots": [{"name": "Location", "type": "TIDE_LOCATION"}]}
   ]
 }

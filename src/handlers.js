@@ -7,7 +7,7 @@ module.exports = {
     this.emit(':tellWithCard', 'Welcome to tide times', 'Tide Times', 'See http://www.ukho.gov.uk/easytide/EasyTide/ShowPrediction.aspx');
   },
   BothTimes() {
-    const city = this.event.request.intent.slots.City.value;
+    const city = this.event.request.intent.slots.Location.value;
 
     tideManger.getTideTimes(city)
       .then((result) => {
@@ -28,7 +28,7 @@ module.exports = {
       });
   },
   HighTide() {
-    const city = this.event.request.intent.slots.City.value;
+    const city = this.event.request.intent.slots.Location.value;
 
     tideManger.getTideTimes(city)
       .then((result) => {
@@ -48,7 +48,7 @@ module.exports = {
       });
   },
   LowTide() {
-    const city = this.event.request.intent.slots.City.value;
+    const city = this.event.request.intent.slots.Location.value;
 
     tideManger.getTideTimes(city)
       .then((result) => {
