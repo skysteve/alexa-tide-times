@@ -24,7 +24,7 @@ module.exports = {
       })
       .catch((ex) => {
         console.error(ex);
-        this.emit(':tell', `Failed to load tide times for ${city}`);
+        this.emit(':tellWithCard', `Failed to load tide times for ${city}`, 'Tide Times', `Failed to load tide times for ${city}`);
       });
   },
   HighTide() {
@@ -44,7 +44,7 @@ module.exports = {
       })
       .catch((ex) => {
         console.error(ex);
-        this.emit(':tell', `Failed to load tide times for ${city}`);
+        this.emit(':tellWithCard', `Failed to load tide times for ${city}`, 'Tide Times', `Failed to load tide times for ${city}`);
       });
   },
   LowTide() {
@@ -64,7 +64,7 @@ module.exports = {
       })
       .catch((ex) => {
         console.error(ex);
-        this.emit(':tell', `Failed to load tide times for ${city}`);
+        this.emit(':tellWithCard', `Failed to load tide times for ${city}`, 'Tide Times', `Failed to load tide times for ${city}`);
       });
   },
   Unhandled() {
