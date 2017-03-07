@@ -7,6 +7,10 @@ function getLocation(intent) {
   return locationManager.getNearestMatch(intent.slots.Location.value);
 }
 
+function formatTimes(arrTimes) {
+  return arrTimes.map((t) => t.time).join(', and ');
+}
+
 module.exports = {
   LaunchRequest() {
     this.emit(':tellWithCard', 'Welcome to tide times', 'Tide Times', 'See http://www.ukho.gov.uk/easytide/EasyTide/ShowPrediction.aspx');
@@ -21,15 +25,15 @@ module.exports = {
           speechReply = `There are no tide times for ${location}`;
         } else {
           speechReply = `Today in ${location}
-          high tide is at ${result.highTimes.map((t) => t.time).join(', ')}.
-          Low tide is at ${result.lowTimes.map((t) => t.time).join(', ')}`;
+          high tide is at ${formatTimes(result.highTimes)}.
+          Low tide is at ${formatTimes(result.lowTimes)}`;
         }
 
         this.emit(':tellWithCard', speechReply, 'Tide Times', speechReply);
       })
       .catch((ex) => {
         console.error(ex);
-        this.emit(':tellWithCard', `Failed to load tide times for ${location}`, 'Tide Times', `Failed to load tide times for ${location}`);
+        this.emit(':tellWithCard', `Failed to load tide times for ${location}`, 'Tide Times', `Failed to load tide times for "${location}"`);
       });
   },
   HighTide() {
@@ -38,18 +42,18 @@ module.exports = {
     tideManger.getTideTimes(location)
       .then((result) => {
         let speechReply;
-        if (result.highTimes.length < 1 && result.lowTimes.length < 1) {
+        if (result.highTimes.length < 1) {
           speechReply = `There are no tide times for ${location}`;
         } else {
           speechReply = `Today in ${location}
-          high tide is at ${result.highTimes.map((t) => t.time).join(', ')}.`;
+          high tide is at ${formatTimes(result.highTimes)}.`;
         }
 
         this.emit(':tellWithCard', speechReply, 'Tide Times', speechReply);
       })
       .catch((ex) => {
         console.error(ex);
-        this.emit(':tellWithCard', `Failed to load tide times for ${location}`, 'Tide Times', `Failed to load tide times for ${location}`);
+        this.emit(':tellWithCard', `Failed to load tide times for ${location}`, 'Tide Times', `Failed to load tide times for "${location}"`);
       });
   },
   LowTide() {
@@ -62,14 +66,14 @@ module.exports = {
           speechReply = `There are no tide times for ${location}`;
         } else {
           speechReply = `Today in ${location}
-          low tide is at ${result.lowTimes.map((t) => t.time).join(', ')}`;
+          low tide is at ${formatTimes(result.lowTimes)}`;
         }
 
         this.emit(':tellWithCard', speechReply, 'Tide Times', speechReply);
       })
       .catch((ex) => {
         console.error(ex);
-        this.emit(':tellWithCard', `Failed to load tide times for ${location}`, 'Tide Times', `Failed to load tide times for ${location}`);
+        this.emit(':tellWithCard', `Failed to load tide times for ${location}`, 'Tide Times', `Failed to load tide times for "${location}"`);
       });
   },
   Unhandled() {

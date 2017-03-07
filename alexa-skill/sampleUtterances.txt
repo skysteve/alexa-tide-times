@@ -5,13 +5,17 @@ BothTimes for tide times at {Location}
 BothTimes for tide times at the {Location}
 
 HighTide for high tide time in {Location}
+HighTide for toady's high tide time in {Location}
+HighTide for toady's high tide times in {Location}
 HighTide what time is high tide in {Location}
 HighTide when is high tide in {Location}
 HighTide when is high tide in the {Location}
 HighTide when is high tide at {Location}
 HighTide when is high tide at the {Location}
 
-LowTide for high tide time in {Location}
+LowTide for low tide time in {Location}
+LowTide for toady's low tide time in {Location}
+LowTide for toady's low tide times in {Location}
 LowTide what time is low tide in {Location}
 LowTide when is low tide in {Location}
 LowTide when is low tide in the {Location}
