@@ -1,7 +1,6 @@
 'use strict';
 
 const feedReader = require('feed-read');
-const stripTags = require('striptags');
 
 const urlBase = 'https://www.tidetimes.org.uk/CITY-tide-times.rss';
 
@@ -20,7 +19,7 @@ function mapAndFilterTimes(times, filter) {
   // const now = moment();
   return times.filter(time => time.indexOf(filter) > -1)
     .map((tideTime) => ({
-      time: tideTime.substring(tideTime.indexOf(')') + 1),
+      time: tideTime.substring(0, tideTime.indexOf('-') - 1),
       height: tideTime.substring(tideTime.indexOf('(') + 1, tideTime.indexOf(')')).replace('m', ' meters')
     }))
     .filter(tideTime => { // filter times that have already past
@@ -51,9 +50,10 @@ module.exports = {
           throw new Error('Failed to parse feed');
         }
 
-        const content = stripTags(feed[0].content);
         const date = feed[0].title.substring(feed[0].title.indexOf('for ') + 4);
-        const times = content.substring(content.indexOf(' - ') + 3).split(' - ');
+        const times = feed[0].content.match(/<br\/>(\w|\s|:|-|\(|\))*\.\w*\)/g)
+          .map(match => match.replace('<br/>', ''));
+
         const highTimes = mapAndFilterTimes(times, 'High');
         const lowTimes = mapAndFilterTimes(times, 'Low');
 
