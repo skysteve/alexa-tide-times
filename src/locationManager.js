@@ -6,6 +6,6 @@ const locations = ["Aberdaron","Aberdeen","Aberdovey","Aberporth","Aberystwyth",
 
 module.exports = {
   getNearestMatch(input) {
-    return didYouMean(input, locations);
+    return didYouMean(input, locations) || input;
   }
 };

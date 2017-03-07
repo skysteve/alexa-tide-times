@@ -37,7 +37,7 @@ function mapAndFilterTimes(times, filter) {
 module.exports = {
   getTideTimes(city) {
     if (!city) {
-      throw new Error('No City');
+      return Promise.reject('No City');
     }
 
     const url = urlBase.replace('CITY', city.replace(/\s/g, '-').toLowerCase());
