@@ -21,15 +21,25 @@ module.exports = {
     tideManger.getTideTimes(location)
       .then((result) => {
         let speechReply;
+        let cardText;
         if (result.highTimes.length < 1 && result.lowTimes.length < 1) {
-          speechReply = `There are no tide times for ${location}`;
+          speechReply = `There are no tide times for ${location}.`;
+          cardText = speechReply;
         } else {
           speechReply = `Today in ${location}
-          high tide is at ${formatTimes(result.highTimes)}.
-          Low tide is at ${formatTimes(result.lowTimes)}`;
+          High tide is at ${formatTimes(result.highTimes)}.
+          Low tide is at ${formatTimes(result.lowTimes)}.`;
+
+          cardText = `Today in ${location}
+          High tide is at ${formatTimes(result.highTimes).toLowerCase()}.
+          Low tide is at ${formatTimes(result.lowTimes).toLowerCase()}.`
+            .replace(/ meters/g, 'm')
+            .replace(/at a height of /g, '(')
+            .replace(/,/g, '),')
+            .replace(/\.$/g, ').');
         }
 
-        this.emit(':tellWithCard', speechReply, 'Tide Times', speechReply);
+        this.emit(':tellWithCard', speechReply, 'Tide Times', cardText);
       })
       .catch((ex) => {
         console.error(ex);
@@ -46,7 +56,7 @@ module.exports = {
           speechReply = `There are no tide times for ${location}`;
         } else {
           speechReply = `Today in ${location}
-          high tide is at ${formatTimes(result.highTimes)}.`;
+          High tide is at ${formatTimes(result.highTimes)}.`;
         }
 
         this.emit(':tellWithCard', speechReply, 'Tide Times', speechReply);
@@ -66,7 +76,7 @@ module.exports = {
           speechReply = `There are no tide times for ${location}`;
         } else {
           speechReply = `Today in ${location}
-          low tide is at ${formatTimes(result.lowTimes)}`;
+          Low tide is at ${formatTimes(result.lowTimes)}.`;
         }
 
         this.emit(':tellWithCard', speechReply, 'Tide Times', speechReply);
