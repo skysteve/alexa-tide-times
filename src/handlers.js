@@ -8,7 +8,7 @@ function getLocation(intent) {
 }
 
 function formatTimes(arrTimes) {
-  return arrTimes.map((t) => t.time).join(', and ');
+  return arrTimes.map((t) => `${t.time} at a height of ${t.height}`).join(', and ');
 }
 
 module.exports = {

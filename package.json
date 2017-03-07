@@ -19,8 +19,7 @@
   "dependencies": {
     "alexa-sdk": "^1.0.7",
     "didyoumean": "^1.2.1",
-    "feed-read": "0.0.1",
-    "moment": "^2.17.1"
+    "feed-read": "0.0.1"
   },
   "devDependencies": {
     "eslint": "^3.17.0",

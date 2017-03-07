@@ -15,21 +15,33 @@ function loadFeed(url) {
   });
 }
 
+/**
+ * Filter the tide times as per filter (High | Low) and map back to a standard structure
+ * @param times {array} the array of raw times
+ * @param filter {string} the filter to apply (High | Low)
+ * @returns {Array|*} mapped array
+ */
 function mapAndFilterTimes(times, filter) {
-  // const now = moment();
+  if (!times) {
+    return [];
+  }
+
   return times.filter(time => time.indexOf(filter) > -1)
-    .map((tideTime) => ({
-      time: tideTime.substring(0, tideTime.indexOf('-') - 1),
-      height: tideTime.substring(tideTime.indexOf('(') + 1, tideTime.indexOf(')')).replace('m', ' meters')
-    }))
-    .filter(tideTime => { // filter times that have already past
-      if (!tideTime.time) {
-        return false;
+    .map((tideTime) => {
+      let time = tideTime.substring(0, tideTime.indexOf('-') - 1);
+      const height = tideTime.substring(tideTime.indexOf('(') + 1, tideTime.indexOf(')')).replace('m', ' meters');
+      let hours = parseInt(time.substring(0, 2), 10);
+      const minutes = parseInt(time.substring(3), 10);
+
+      // if before 12, add AM, if after 12, knock off 12h and add PM
+      if (hours < 12) {
+        time = `${hours}:${minutes} AM`;
+      } else {
+        hours -= 12;
+        time = `${hours}:${minutes} PM`;
       }
 
-      // const time = moment(tideTime.time, 'HH:mm');
-
-      return true; // TODO time.isSameOrAfter(now);
+      return { height, time };
     });
 }
 

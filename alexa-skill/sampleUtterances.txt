@@ -1,8 +1,11 @@
 BothTimes for the tide times in {Location}
 BothTimes for tide times in {Location}
+BothTimes for the latest tide times in {Location}
 BothTimes for tide times in the {Location}
 BothTimes for tide times at {Location}
+BothTimes for the latest tide times at {Location}
 BothTimes for tide times at the {Location}
+BothTimes for the latest tide times at the {Location}
 
 HighTide for high tide time in {Location}
 HighTide for toady's high tide time in {Location}
