@@ -37,7 +37,10 @@ function mapAndFilterTimes(times, filter) {
       if (hours < 12) {
         time = `${hours}:${minutes} AM`;
       } else {
-        hours -= 12;
+        // only -12 if it's not 12
+        if (hours > 12) {
+          hours -= 12;
+        }
         time = `${hours}:${minutes} PM`;
       }
 
