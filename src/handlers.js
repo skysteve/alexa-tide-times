@@ -8,6 +8,9 @@ const UNKNOWN_LOC_REPLY = 'Sorry, I didn\'t hear a location and you haven\'t set
 const CARD_TITLE = 'Tide Times';
 
 function getLocation(intent, returnDefault, favLoc) {
+  if (!intent || !intent.slots || !intent.slots.Location) {
+    return favLoc;
+  }
   return locationManager.getNearestMatch(intent.slots.Location.value, returnDefault) || favLoc;
 }
 
@@ -17,7 +20,7 @@ function formatTimes(arrTimes) {
 
 module.exports = {
   LaunchRequest() {
-    this.BothTimes();
+    this.emit('BothTimes');
   },
   BothTimes() {
     const location = getLocation(this.event.request.intent, true, this.attributes[FAV_LOCATION_KEY]);
