@@ -2,6 +2,7 @@
   "intents": [
     {"intent": "BothTimes", "slots": [{"name": "Location", "type": "TIDE_LOCATION"}]},
     {"intent": "HighTide", "slots": [{"name": "Location", "type": "TIDE_LOCATION"}]},
-    {"intent": "LowTide", "slots": [{"name": "Location", "type": "TIDE_LOCATION"}]}
+    {"intent": "LowTide", "slots": [{"name": "Location", "type": "TIDE_LOCATION"}]},
+    {"intent": "SaveFavourite", "slots": [{"name": "Location", "type": "TIDE_LOCATION"}]}
   ]
 }

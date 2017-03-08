@@ -24,3 +24,29 @@ LowTide when is low tide in {Location}
 LowTide when is low tide in the {Location}
 LowTide when is low tide at {Location}
 LowTide when is low tide at the {Location}
+
+SaveFavourite to set my favourite location as {Location}
+SaveFavourite to set my favourite place as {Location}
+SaveFavourite to set my favourite as {Location}
+SaveFavourite to set favourite as {Location}
+SaveFavourite to store my favourite location as {Location}
+SaveFavourite to store my favourite place as {Location}
+SaveFavourite to store my favourite as {Location}
+SaveFavourite to store favourite as {Location}
+SaveFavourite to remember my favourite location as {Location}
+SaveFavourite to remember my favourite place as {Location}
+SaveFavourite to remember my favourite as {Location}
+SaveFavourite to remember favourite as {Location}
+
+SaveFavourite to remember {Location} as my favourite location
+SaveFavourite to remember {Location} as my favourite place
+SaveFavourite to remember {Location} as my favourite
+SaveFavourite to remember {Location} as favourite
+SaveFavourite to set {Location} as my favourite location
+SaveFavourite to set {Location} as my favourite place
+SaveFavourite to set {Location} as my favourite
+SaveFavourite to set {Location} as favourite
+SaveFavourite to store {Location} as my favourite location
+SaveFavourite to store {Location} as my favourite place
+SaveFavourite to store {Location} as my favourite
+SaveFavourite to store {Location} as favourite
