@@ -42,12 +42,11 @@ module.exports = {
           Low tide is at ${formatTimes(result.lowTimes)}.`;
 
           cardText = `Today in ${location}
-          High tide is at ${formatTimes(result.highTimes).toLowerCase()}.
-          Low tide is at ${formatTimes(result.lowTimes).toLowerCase()}.`
+          High tide is at ${formatTimes(result.highTimes).toLowerCase()}).
+          Low tide is at ${formatTimes(result.lowTimes).toLowerCase()}).`
             .replace(/ meters/g, 'm')
             .replace(/at a height of /g, '(')
-            .replace(/,/g, '),')
-            .replace(/\.$/g, ').');
+            .replace(/,/g, '),');
         }
 
         this.emit(':tellWithCard', speechReply, 'Tide Times', cardText);
