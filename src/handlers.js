@@ -17,7 +17,7 @@ function formatTimes(arrTimes) {
 
 module.exports = {
   LaunchRequest() {
-    this.emit(':tellWithCard', 'Welcome to tide times', CARD_TITLE, 'See http://www.ukho.gov.uk/easytide/EasyTide/ShowPrediction.aspx');
+    this.BothTimes();
   },
   BothTimes() {
     const location = getLocation(this.event.request.intent, true, this.attributes[FAV_LOCATION_KEY]);

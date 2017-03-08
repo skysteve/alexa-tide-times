@@ -33,10 +33,22 @@ SaveFavourite to store my favourite location as {Location}
 SaveFavourite to store my favourite place as {Location}
 SaveFavourite to store my favourite as {Location}
 SaveFavourite to store favourite as {Location}
-SaveFavourite to remember my favourite location as {Location}
-SaveFavourite to remember my favourite place as {Location}
-SaveFavourite to remember my favourite as {Location}
-SaveFavourite to remember favourite as {Location}
+SaveFavourite to remember my default location as {Location}
+SaveFavourite to remember my default place as {Location}
+SaveFavourite to remember my default as {Location}
+SaveFavourite to remember default as {Location}
+SaveFavourite to set my default location as {Location}
+SaveFavourite to set my default place as {Location}
+SaveFavourite to set my default as {Location}
+SaveFavourite to set default as {Location}
+SaveFavourite to store my default location as {Location}
+SaveFavourite to store my default place as {Location}
+SaveFavourite to store my default as {Location}
+SaveFavourite to store default as {Location}
+SaveFavourite to remember my default location as {Location}
+SaveFavourite to remember my default place as {Location}
+SaveFavourite to remember my default as {Location}
+SaveFavourite to remember default as {Location}
 
 SaveFavourite to remember {Location} as my favourite location
 SaveFavourite to remember {Location} as my favourite place
