@@ -1,3 +1,4 @@
+BothTimes {Location}
 BothTimes for the tide times in {Location}
 BothTimes for tide times in {Location}
 BothTimes for the latest tide times in {Location}
