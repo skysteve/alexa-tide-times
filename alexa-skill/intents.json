@@ -3,6 +3,11 @@
     {"intent": "BothTimes", "slots": [{"name": "Location", "type": "TIDE_LOCATION"}]},
     {"intent": "HighTide", "slots": [{"name": "Location", "type": "TIDE_LOCATION"}]},
     {"intent": "LowTide", "slots": [{"name": "Location", "type": "TIDE_LOCATION"}]},
-    {"intent": "SaveFavourite", "slots": [{"name": "Location", "type": "TIDE_LOCATION"}]}
+    {"intent": "SaveFavourite", "slots": [{"name": "Location", "type": "TIDE_LOCATION"}]},
+    {"intent": "AMAZON.YesIntent"},
+    {"intent": "AMAZON.NoIntent"},
+    {"intent": "AMAZON.HelpIntent"},
+    {"intent": "AMAZON.StopIntent"},
+    {"intent": "AMAZON.CancelIntent"}
   ]
 }

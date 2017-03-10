@@ -129,13 +129,17 @@ module.exports = {
      Would you like to hear today's tide times?`;
     this.emit(':ask', message, message);
   },
-
   'AMAZON.YesIntent'() {
     this.emit(':ask', 'Great try saying a location such as "Port Erin"');
   },
-
   'AMAZON.NoIntent'() {
     this.emit(':tell', 'Ok, see you next time!');
+  },
+  "AMAZON.StopIntent": function() {
+    this.emit(':tell', "Goodbye!");
+  },
+  "AMAZON.CancelIntent": function() {
+    this.emit(':tell', "Goodbye!");
   },
   Unhandled() {
     this.emit(':tell', 'Sorry, I failed to understand your query, please try again');
