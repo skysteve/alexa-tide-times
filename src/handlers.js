@@ -120,16 +120,16 @@ module.exports = {
     this.emit(':saveState', true);
     this.emit(':tell', `Your favourite location has been saved as ${location}`);
   },
-  'AMAZON.HelpIntent': function() {
-    var message = 'You can ask for today\'s tide times at one of over 700 locations around the British Isles. Would you like to hear today\'s tide times?';
+  'AMAZON.HelpIntent'() {
+    const message = 'You can ask for today\'s tide times at one of over 700 locations around the British Isles. Would you like to hear today\'s tide times?';
     this.emit(':ask', message, message);
   },
 
-  'AMAZON.YesIntent': function() {
-    this.emit(':ask', `Great try saying a location such as "Port Erin"`);
+  'AMAZON.YesIntent'() {
+    this.emit(':ask', 'Great try saying a location such as "Port Erin"');
   },
 
-  'AMAZON.NoIntent': function() {
+  'AMAZON.NoIntent'() {
     this.emit(':tell', 'Ok, see you next time!');
   },
   Unhandled() {
