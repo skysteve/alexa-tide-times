@@ -25,7 +25,10 @@ module.exports = {
     if (location) {
       return this.emit('BothTimes');
     }
-    this.emit('AMAZON.HelpIntent');
+
+    const message = `Welcome to tide times. You can ask for today's tide times at one of over 700 locations around the British Isles.
+    Would you like to hear today's tide times?`;
+    this.emit(':ask', message, message);
   },
   BothTimes() {
     const location = getLocation(this.event.request.intent, true, this.attributes[FAV_LOCATION_KEY]);
@@ -121,7 +124,9 @@ module.exports = {
     this.emit(':tell', `Your favourite location has been saved as ${location}`);
   },
   'AMAZON.HelpIntent'() {
-    const message = 'You can ask for today\'s tide times at one of over 700 locations around the British Isles. Would you like to hear today\'s tide times?';
+    const message = `You can ask for today's tide times at one of over 700 locations around the British Isles.
+     You can also store your favourite location by saying "Alexa ask tide times to set my favourite location as "Port Erin", then in future you can just say "Alexa open tide times"
+     Would you like to hear today's tide times?`;
     this.emit(':ask', message, message);
   },
 
