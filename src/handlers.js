@@ -130,7 +130,7 @@ module.exports = {
     this.emit(':ask', message, message);
   },
   'AMAZON.YesIntent'() {
-    this.emit(':ask', 'Great try saying a location such as "Port Erin"');
+    this.emit(':ask', 'Great. Try saying a location such as, "Port Erin"');
   },
   'AMAZON.NoIntent'() {
     this.emit(':tell', 'Ok, see you next time!');
