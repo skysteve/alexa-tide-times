@@ -31,7 +31,11 @@ function mapAndFilterTimes(times, filter) {
       let time = tideTime.substring(0, tideTime.indexOf('-') - 1);
       const height = tideTime.substring(tideTime.indexOf('(') + 1, tideTime.indexOf(')')).replace('m', ' meters');
       let hours = parseInt(time.substring(0, 2), 10);
-      const minutes = parseInt(time.substring(3), 10).toFixed(2);
+      let minutes = parseInt(time.substring(3), 10);
+
+      if (minutes < 10) {
+        minutes = `0${minutes}`;
+      }
 
       // if before 12, add AM, if after 12, knock off 12h and add PM
       if (hours < 12) {
