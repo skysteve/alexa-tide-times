@@ -135,11 +135,11 @@ module.exports = {
   'AMAZON.NoIntent'() {
     this.emit(':tell', 'Ok, see you next time!');
   },
-  "AMAZON.StopIntent": function() {
-    this.emit(':tell', "Goodbye!");
+  'AMAZON.StopIntent'() {
+    this.emit(':tell', 'Goodbye!');
   },
-  "AMAZON.CancelIntent": function() {
-    this.emit(':tell', "Goodbye!");
+  'AMAZON.CancelIntent'() {
+    this.emit(':tell', 'Goodbye!');
   },
   Unhandled() {
     this.emit(':tell', 'Sorry, I failed to understand your query, please try again');
