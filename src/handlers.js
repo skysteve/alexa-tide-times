@@ -22,6 +22,17 @@ function getLocation(intent, returnDefault, favLoc) {
   return locationManager.getNearestMatch(intent.slots.Location.value, returnDefault);
 }
 
+function handleNoLocation(event) {
+  console.log('No location - returning out');
+
+  if (event.request.intent && event.request.intent.slots && event.request.intent.slots.Location && event.request.intent.slots.Location.value) {
+    const text = `Sorry I couldn't find tide times for ${event.request.intent.slots.Location.value}. Please try a different location`;
+    return this.emit(':tellWithCard', text, CARD_TITLE, text);
+  }
+
+  return this.emit(':tellWithCard', UNKNOWN_LOC_REPLY, CARD_TITLE, UNKNOWN_LOC_REPLY);
+}
+
 function formatTimes(arrTimes) {
   return arrTimes.map((t) => `${t.time} at a height of ${t.height}`).join(', and ');
 }
@@ -40,15 +51,14 @@ module.exports = {
     this.emit(':ask', message, message);
   },
   BothTimes() {
-    console.log('request', JSON.stringify(this.event, null, 2));
+    console.log('BothTimes: request', JSON.stringify(this.event, null, 2));
 
     const location = loc || getLocation(this.event.request.intent, true, this.attributes[FAV_LOCATION_KEY]);
 
     console.log('Location is:', location, '. favourite:', this.attributes[FAV_LOCATION_KEY]);
 
     if (!location) {
-      console.log('No location - returning out');
-      return this.emit(':tellWithCard', UNKNOWN_LOC_REPLY, CARD_TITLE, UNKNOWN_LOC_REPLY);
+      return handleNoLocation(this.event);
     }
 
     tideManger.getTideTimes(location)
@@ -79,10 +89,14 @@ module.exports = {
       });
   },
   HighTide() {
-    const location = getLocation(this.event.request.intent, true, this.attributes[FAV_LOCATION_KEY]);
+    console.log('HighTide: request', JSON.stringify(this.event, null, 2));
+
+    const location = loc || getLocation(this.event.request.intent, true, this.attributes[FAV_LOCATION_KEY]);
+
+    console.log('Location is:', location, '. favourite:', this.attributes[FAV_LOCATION_KEY]);
 
     if (!location) {
-      return this.emit(':tellWithCard', UNKNOWN_LOC_REPLY, CARD_TITLE, UNKNOWN_LOC_REPLY);
+      return handleNoLocation(this.event);
     }
 
     tideManger.getTideTimes(location)
@@ -103,10 +117,14 @@ module.exports = {
       });
   },
   LowTide() {
-    const location = getLocation(this.event.request.intent, true, this.attributes[FAV_LOCATION_KEY]);
+    console.log('LowTide: request', JSON.stringify(this.event, null, 2));
+
+    const location = loc || getLocation(this.event.request.intent, true, this.attributes[FAV_LOCATION_KEY]);
+
+    console.log('Location is:', location, '. favourite:', this.attributes[FAV_LOCATION_KEY]);
 
     if (!location) {
-      return this.emit(':tellWithCard', UNKNOWN_LOC_REPLY, CARD_TITLE, UNKNOWN_LOC_REPLY);
+      return handleNoLocation(this.event);
     }
 
     tideManger.getTideTimes(location)
