@@ -11,13 +11,13 @@ let loc;
 function getLocation(intent, returnDefault, favLoc) {
   // if there's no location slot, but there is a fav location, use that
   if (favLoc && (!intent || !intent.slots || !intent.slots.Location || !intent.slots.Location.value)) {
-    console.log('no location', intent);
+    console.log('no_location', intent);
     return favLoc;
   }
 
   // safety net
-  if (!intent.slots || !intent.slots.Location || !intent.slots.Location.value) {
-    console.log('safety net', intent);
+  if (!intent || !intent.slots || !intent.slots.Location || !intent.slots.Location.value) {
+    console.log('no_loc_safety_net', intent);
     return;
   }
 
@@ -83,17 +83,19 @@ module.exports = {
             .replace(/,/g, '),');
         }
 
+        console.log('BothTimes_success');
+
         this.emit(':tellWithCard', speechReply, 'Tide Times', cardText);
       })
       .catch((ex) => {
         console.error(ex);
-        this.emit(':tellWithCard', `Failed to load tide times for ${location}`, CARD_TITLE, `Failed to load tide times for "${location}"`);
+        this.emit(':tellWithCard', `Failed to load tide times. ${ex.message}`, CARD_TITLE, `Failed to load tide times ${ex.message}`);
       });
   },
   HighTide() {
     console.log('HighTide: request', JSON.stringify(this.event, null, 2));
 
-    const location = loc || getLocation(this.event.request.intent, true, this.attributes[FAV_LOCATION_KEY]);
+    const location = getLocation(this.event.request.intent, true, this.attributes[FAV_LOCATION_KEY]);
 
     console.log('Location is:', location, '. favourite:', this.attributes[FAV_LOCATION_KEY]);
 
@@ -111,17 +113,19 @@ module.exports = {
           High tide is at ${formatTimes(result.highTimes)}.`;
         }
 
+        console.log('HighTide_success');
+
         this.emit(':tellWithCard', speechReply, 'Tide Times', speechReply);
       })
       .catch((ex) => {
         console.error(ex);
-        this.emit(':tellWithCard', `Failed to load tide times for ${location}`, CARD_TITLE, `Failed to load tide times for "${location}"`);
+        this.emit(':tellWithCard', `Failed to load tide times. ${ex.message}`, CARD_TITLE, `Failed to load tide times ${ex.message}`);
       });
   },
   LowTide() {
     console.log('LowTide: request', JSON.stringify(this.event, null, 2));
 
-    const location = loc || getLocation(this.event.request.intent, true, this.attributes[FAV_LOCATION_KEY]);
+    const location = getLocation(this.event.request.intent, true, this.attributes[FAV_LOCATION_KEY]);
 
     console.log('Location is:', location, '. favourite:', this.attributes[FAV_LOCATION_KEY]);
 
@@ -139,18 +143,21 @@ module.exports = {
           Low tide is at ${formatTimes(result.lowTimes)}.`;
         }
 
+        console.log('LowTide_success');
+
         this.emit(':tellWithCard', speechReply, 'Tide Times', speechReply);
       })
       .catch((ex) => {
         console.error(ex);
-        this.emit(':tellWithCard', `Failed to load tide times for ${location}`, CARD_TITLE, `Failed to load tide times for "${location}"`);
+        this.emit(':tellWithCard', `Failed to load tide times. ${ex.message}`, CARD_TITLE, `Failed to load tide times ${ex.message}`);
       });
   },
   SaveFavourite() {
+    console.log('SaveFavourite: request', JSON.stringify(this.event, null, 2));
     const location = getLocation(this.event.request.intent, false);
 
     if (!location) {
-      return this.emit(':tell', `Sorry I couldn't find tide time for ${location}`);
+      return this.emit(':tellWithCard', 'Sorry I didn\'t hear you properly, please try again', CARD_TITLE, 'Sorry I didn\'t hear you properly, please try again');
     }
 
     this.attributes[FAV_LOCATION_KEY] = location;
