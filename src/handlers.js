@@ -9,16 +9,17 @@ const CARD_TITLE = 'Tide Times';
 let loc;
 
 function getLocation(intent, returnDefault, favLoc) {
-  if (favLoc && (!intent || !intent.slots || !intent.slots.Location)) {
+  // if there's no location slot, but there is a fav location, use that
+  if (favLoc && (!intent || !intent.slots || !intent.slots.Location || !intent.slots.Location.value)) {
     return favLoc;
   }
 
   // safety net
-  if (!intent.slots || !intent.Location) {
+  if (!intent.slots || !intent.Location || !intent.slots.Location.value) {
     return;
   }
 
-  return locationManager.getNearestMatch(intent.slots.Location.value, returnDefault) || favLoc;
+  return locationManager.getNearestMatch(intent.slots.Location.value, returnDefault);
 }
 
 function formatTimes(arrTimes) {
