@@ -6,6 +6,7 @@ const tideManger = require('./tideManager');
 const FAV_LOCATION_KEY = 'favourite_location';
 const UNKNOWN_LOC_REPLY = 'Sorry, I didn\'t hear a location and you haven\'t set a favourite yet. You can set a favourite by saying "Alexa ask tide times to set my favourite location as Place"';
 const CARD_TITLE = 'Tide Times';
+let loc;
 
 function getLocation(intent, returnDefault, favLoc) {
   if (favLoc && (!intent || !intent.slots || !intent.slots.Location)) {
@@ -24,6 +25,7 @@ module.exports = {
     const location = getLocation(this.event.request.intent, true, this.attributes[FAV_LOCATION_KEY]);
 
     if (location) {
+      loc = location;
       return this.emit('BothTimes');
     }
 
@@ -32,9 +34,9 @@ module.exports = {
     this.emit(':ask', message, message);
   },
   BothTimes() {
-    const location = getLocation(this.event.request.intent, true, this.attributes[FAV_LOCATION_KEY]);
+    const location = loc || getLocation(this.event.request.intent, true, this.attributes[FAV_LOCATION_KEY]);
 
-    console.log('Location is', location, 'requested', this.event.request.intent.slots, 'favourite', this.attributes[FAV_LOCATION_KEY]);
+    console.log('Location is', location, /* 'requested', this.event.request.intent.slots, */ 'favourite', this.attributes[FAV_LOCATION_KEY]);
 
     if (!location) {
       return this.emit(':tellWithCard', UNKNOWN_LOC_REPLY, CARD_TITLE, UNKNOWN_LOC_REPLY);
