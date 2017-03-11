@@ -16,8 +16,8 @@ function getLocation(intent, returnDefault, favLoc) {
   }
 
   // safety net
-  if (!intent.slots || !intent.Location || !intent.slots.Location.value) {
-    console.log('safety net', !intent.slots);
+  if (!intent.slots || !intent.slots.Location || !intent.slots.Location.value) {
+    console.log('safety net', intent);
     return;
   }
 
