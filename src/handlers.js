@@ -58,7 +58,7 @@ module.exports = {
     console.log('Location is:', location, '. favourite:', this.attributes[FAV_LOCATION_KEY]);
 
     if (!location) {
-      return handleNoLocation(this.event);
+      return handleNoLocation.call(this, this.event);
     }
 
     tideManger.getTideTimes(location)
@@ -96,7 +96,7 @@ module.exports = {
     console.log('Location is:', location, '. favourite:', this.attributes[FAV_LOCATION_KEY]);
 
     if (!location) {
-      return handleNoLocation(this.event);
+      return handleNoLocation.call(this, this.event);
     }
 
     tideManger.getTideTimes(location)
@@ -124,7 +124,7 @@ module.exports = {
     console.log('Location is:', location, '. favourite:', this.attributes[FAV_LOCATION_KEY]);
 
     if (!location) {
-      return handleNoLocation(this.event);
+      return handleNoLocation.call(this, this.event);
     }
 
     tideManger.getTideTimes(location)
