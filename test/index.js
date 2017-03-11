@@ -4,7 +4,7 @@
 const tideManager = require('../src/tideManager');
 const locationManager = require('../src/locationManager');
 
-const location = locationManager.getNearestMatch('river tease entrance');
+const location = locationManager.getNearestMatch('douglas');
 
 console.log(location);
 

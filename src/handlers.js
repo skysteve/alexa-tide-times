@@ -11,11 +11,13 @@ let loc;
 function getLocation(intent, returnDefault, favLoc) {
   // if there's no location slot, but there is a fav location, use that
   if (favLoc && (!intent || !intent.slots || !intent.slots.Location || !intent.slots.Location.value)) {
+    console.log('no location', intent);
     return favLoc;
   }
 
   // safety net
   if (!intent.slots || !intent.Location || !intent.slots.Location.value) {
+    console.log('safety net', !intent.slots);
     return;
   }
 
