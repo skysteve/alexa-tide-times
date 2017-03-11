@@ -5,6 +5,7 @@ const feedReader = require('feed-read');
 const urlBase = 'https://www.tidetimes.org.uk/CITY-tide-times.rss';
 
 function loadFeed(url) {
+  console.log('Loading feed');
   return new Promise((resolve, reject) => {
     feedReader(url, (err, result) => {
       if (err) {
@@ -54,6 +55,7 @@ function mapAndFilterTimes(times, filter) {
 
 module.exports = {
   getTideTimes(city) {
+    console.log('get times', city);
     if (!city) {
       return Promise.reject('No City');
     }
