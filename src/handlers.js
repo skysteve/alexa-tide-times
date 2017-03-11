@@ -13,6 +13,11 @@ function getLocation(intent, returnDefault, favLoc) {
     return favLoc;
   }
 
+  // safety net
+  if (!intent.slots || !intent.Location) {
+    return;
+  }
+
   return locationManager.getNearestMatch(intent.slots.Location.value, returnDefault) || favLoc;
 }
 
