@@ -40,12 +40,13 @@ module.exports = {
     this.emit(':ask', message, message);
   },
   BothTimes() {
-    const location = loc || getLocation(this.event.request.intent, true, this.attributes[FAV_LOCATION_KEY]);
-
     console.log('request', JSON.stringify(this.event, null, 2));
     console.log('Location is:', location, '. favourite:', this.attributes[FAV_LOCATION_KEY]);
 
+    const location = loc || getLocation(this.event.request.intent, true, this.attributes[FAV_LOCATION_KEY]);
+
     if (!location) {
+      console.log('No location - returning out');
       return this.emit(':tellWithCard', UNKNOWN_LOC_REPLY, CARD_TITLE, UNKNOWN_LOC_REPLY);
     }
 
