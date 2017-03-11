@@ -157,12 +157,14 @@ module.exports = {
     const location = getLocation(this.event.request.intent, false);
 
     if (!location) {
+      console.log('SaveFavourite send failure');
       return this.emit(':tellWithCard', 'Sorry I didn\'t hear you properly, please try again', CARD_TITLE, 'Sorry I didn\'t hear you properly, please try again');
     }
 
     this.attributes[FAV_LOCATION_KEY] = location;
     this.emit(':saveState', true);
     this.emit(':tell', `Your favourite location has been saved as ${location}`);
+    console.log('SaveFavourite favourite saved as', location);
   },
   'AMAZON.HelpIntent'() {
     const message = `You can ask for today's tide times at one of over 700 locations around the British Isles.
