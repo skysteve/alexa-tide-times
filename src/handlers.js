@@ -11,7 +11,7 @@ let loc;
 function getLocation(intent, returnDefault, favLoc) {
   // if there's no location slot, but there is a fav location, use that
   if (favLoc && (!intent || !intent.slots || !intent.slots.Location || !intent.slots.Location.value)) {
-    console.log('no_location', intent);
+    console.log('failed to get location', intent);
     return favLoc;
   }
 
@@ -25,7 +25,7 @@ function getLocation(intent, returnDefault, favLoc) {
 }
 
 function handleNoLocation(event) {
-  console.log('No location - returning out');
+  console.log('No_Location - returning out');
 
   if (event.request.intent && event.request.intent.slots && event.request.intent.slots.Location && event.request.intent.slots.Location.value) {
     const text = `Sorry I couldn't find tide times for ${event.request.intent.slots.Location.value}. Please try a different location`;
@@ -164,7 +164,7 @@ module.exports = {
     this.attributes[FAV_LOCATION_KEY] = location;
     this.emit(':saveState', true);
     this.emit(':tell', `Your favourite location has been saved as ${location}`);
-    console.log('SaveFavourite favourite saved as', location);
+    console.log('SaveFavourite_success favourite saved as', location);
   },
   'AMAZON.HelpIntent'() {
     const message = `You can ask for today's tide times at one of over 700 locations around the British Isles.
