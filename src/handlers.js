@@ -88,8 +88,8 @@ module.exports = {
         this.emit(':tellWithCard', speechReply, 'Tide Times', cardText);
       })
       .catch((ex) => {
-        console.error(ex);
-        this.emit(':tellWithCard', `Failed to load tide times. ${ex.message}`, CARD_TITLE, `Failed to load tide times ${ex.message}`);
+        console.error('BothTimes_failed', ex);
+        this.emit(':tellWithCard', `Failed to load tide times for ${location}. Please try again`, CARD_TITLE, `Failed to load tide times for ${location}. Please try again`);
       });
   },
   HighTide() {
@@ -118,8 +118,8 @@ module.exports = {
         this.emit(':tellWithCard', speechReply, 'Tide Times', speechReply);
       })
       .catch((ex) => {
-        console.error(ex);
-        this.emit(':tellWithCard', `Failed to load tide times. ${ex.message}`, CARD_TITLE, `Failed to load tide times ${ex.message}`);
+        console.error('HighTide_failed', ex);
+        this.emit(':tellWithCard', `Failed to load tide times for ${location}. Please try again`, CARD_TITLE, `Failed to load tide times for ${location}. Please try again`);
       });
   },
   LowTide() {
@@ -148,8 +148,8 @@ module.exports = {
         this.emit(':tellWithCard', speechReply, 'Tide Times', speechReply);
       })
       .catch((ex) => {
-        console.error(ex);
-        this.emit(':tellWithCard', `Failed to load tide times. ${ex.message}`, CARD_TITLE, `Failed to load tide times ${ex.message}`);
+        console.error('LowTide_failed', ex);
+        this.emit(':tellWithCard', `Failed to load tide times for ${location}. Please try again`, CARD_TITLE, `Failed to load tide times for ${location}. Please try again`);
       });
   },
   SaveFavourite() {
@@ -157,7 +157,7 @@ module.exports = {
     const location = getLocation(this.event.request.intent, false);
 
     if (!location) {
-      console.log('SaveFavourite_Failed send failure');
+      console.log('SaveFavourite_failed send failure');
       return this.emit(':tellWithCard', 'Sorry I didn\'t hear you properly, please try again', CARD_TITLE, 'Sorry I didn\'t hear you properly, please try again');
     }
 
