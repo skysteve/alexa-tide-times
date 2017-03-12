@@ -157,7 +157,7 @@ module.exports = {
     const location = getLocation(this.event.request.intent, false);
 
     if (!location) {
-      console.log('SaveFavourite send failure');
+      console.log('SaveFavourite_Failed send failure');
       return this.emit(':tellWithCard', 'Sorry I didn\'t hear you properly, please try again', CARD_TITLE, 'Sorry I didn\'t hear you properly, please try again');
     }
 
