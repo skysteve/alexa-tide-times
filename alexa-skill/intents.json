@@ -1,9 +1,9 @@
 {
   "intents": [
-    {"intent": "BothTimes", "slots": [{"name": "Location", "type": "TIDE_LOCATION"}]},
-    {"intent": "HighTide", "slots": [{"name": "Location", "type": "TIDE_LOCATION"}]},
-    {"intent": "LowTide", "slots": [{"name": "Location", "type": "TIDE_LOCATION"}]},
-    {"intent": "SaveFavourite", "slots": [{"name": "Location", "type": "TIDE_LOCATION"}]},
+    {"intent": "BothTimes", "slots": [{"name": "Location", "type": "AMAZON.GB_CITY"}]},
+    {"intent": "HighTide", "slots": [{"name": "Location", "type": "AMAZON.GB_CITY"}]},
+    {"intent": "LowTide", "slots": [{"name": "Location", "type": "AMAZON.GB_CITY"}]},
+    {"intent": "SaveFavourite", "slots": [{"name": "Location", "type": "AMAZON.GB_CITY"}]},
     {"intent": "AMAZON.YesIntent"},
     {"intent": "AMAZON.NoIntent"},
     {"intent": "AMAZON.HelpIntent"},
